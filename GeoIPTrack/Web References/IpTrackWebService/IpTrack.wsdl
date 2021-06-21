@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Join">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="age" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JoinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JoinResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestMethodWithParam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:RegisterModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RegisterModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConfirmPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ListOfRoles" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TestMethodWithParamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestMethodWithParamResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="JoinSoapIn">
+    <wsdl:part name="parameters" element="tns:Join" />
+  </wsdl:message>
+  <wsdl:message name="JoinSoapOut">
+    <wsdl:part name="parameters" element="tns:JoinResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestMethodWithParamSoapIn">
+    <wsdl:part name="parameters" element="tns:TestMethodWithParam" />
+  </wsdl:message>
+  <wsdl:message name="TestMethodWithParamSoapOut">
+    <wsdl:part name="parameters" element="tns:TestMethodWithParamResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IpTrackSoap">
+    <wsdl:operation name="Join">
+      <wsdl:input message="tns:JoinSoapIn" />
+      <wsdl:output message="tns:JoinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestMethodWithParam">
+      <wsdl:input message="tns:TestMethodWithParamSoapIn" />
+      <wsdl:output message="tns:TestMethodWithParamSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IpTrackSoap" type="tns:IpTrackSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Join">
+      <soap:operation soapAction="http://tempuri.org/Join" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestMethodWithParam">
+      <soap:operation soapAction="http://tempuri.org/TestMethodWithParam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IpTrackSoap12" type="tns:IpTrackSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Join">
+      <soap12:operation soapAction="http://tempuri.org/Join" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestMethodWithParam">
+      <soap12:operation soapAction="http://tempuri.org/TestMethodWithParam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IpTrack">
+    <wsdl:port name="IpTrackSoap" binding="tns:IpTrackSoap">
+      <soap:address location="https://localhost:44333/IpTrack.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IpTrackSoap12" binding="tns:IpTrackSoap12">
+      <soap12:address location="https://localhost:44333/IpTrack.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
