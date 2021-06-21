@@ -1,0 +1,294 @@
+{
+  "LoginToService": {
+    "UserName": "wallbeeadmin",
+    "Password": "Wallbee123!"
+  },
+  "AccountNumber": 88,
+  "TransportProduct": 1206,
+  "ShipDate": "2021-06-21T11:54:20.665+05:45",
+  "SenderReference": "117674",
+  "ReceiverReference": "MAIL 20/08-20 MIB",
+  "Incoterm": 0,
+  "ShipmentDescription": {
+    "ShipmentDescription": "Medical EquipmentMedical",
+    "HarmonizedCode": null
+  },
+  "Customs": {
+    "IsDocumentFlag": true,
+    "IsDutiable": true,
+    "Money": {
+      "Value": 10.0,
+      "ValutaCode": 43
+    }
+  },
+  "Insurance": {
+    "InsureShipment": false,
+    "Money": null
+  },
+  "SendAsCOD": {
+    "EnableCOD": false,
+    "Money": null,
+    "PayType": 0
+  },
+  "ShipmentType": 3,
+  "DangerousGoods": {
+    "LimitedQuantityOfDG": false,
+    "Quatity": {
+      "UnitType": 0,
+      "Value": 0.0
+    },
+    "UN_Number": null,
+    "ShipmentContainsDG": false,
+    "Type": 0
+  },
+  "ShipmentDirection": 0,
+  "PickupAddress": {
+    "CountryCode": "DK",
+    "StateCode": 0,
+    "Addressline1": "Lyngvej 2",
+    "Addressline2": null,
+    "Addressline3": "MERMEDCPH1",
+    "Zip": 9240,
+    "City": "Nibe",
+    "Phone": 9240,
+    "Email1": "sunil@codebee.dk",
+    "AttPerson": null,
+    "CompanyName": "9Glazes IVS"
+  },
+  "ReceiverAddress": {
+    "CountryCode": "DK",
+    "StateCode": 0,
+    "Addressline1": "Varemodtagelsen",
+    "Addressline2": "Vestermarksvej 8",
+    "Addressline3": null,
+    "Zip": "9240",
+    "City": "Nibe",
+    "Phone": "04524502810",
+    "Email1": "sunil@codebee.dk",
+    "AttPerson": "Rikke Gylstorff",
+    "CompanyName": "9Glazes IVS"
+  },
+  "SenderAddress": {
+    "CountryCode": "DK",
+    "StateCode": 0,
+    "Addressline1": "Lyngvej 2",
+    "Addressline2": null,
+    "Addressline3": null,
+    "Zip": 9240,
+    "City": "Nibe",
+    "Phone": null,
+    "Email1": "sunil@codebee.dk",
+    "AttPerson": null,
+    "CompanyName": "9Glazes IVS"
+  },
+  "Collies": [
+    {
+      "Weight": {
+        "UnitType": 1,
+        "Value": 1
+      },
+      "Length": {
+        "UnitType": 3,
+        "Value": 1
+      },
+      "Width": {
+        "UnitType": 3,
+        "Value": 1
+      },
+      "Height": {
+        "UnitType": 3,
+        "Value": 1
+      },
+      "CODColliLevel": {
+        "EnableCOD": false,
+        "Money": null,
+        "PayType": 0
+      },
+      "Packaging": {
+        "CustomeType": 1,
+        "TransportDefinedType": 0
+      },
+      "DryIce": {
+        "ShipmentContainsDryIce": false,
+        "Quatity": {
+          "UnitType": 0,
+          "Value": 0.0
+        },
+        "Regulationset": 0
+      }
+    }
+  ],
+  "Handling": null,
+  "CreatePickup": false,
+  "InvoiceSettings": {
+    "CreateInvoice": false,
+    "ShipmentInvoice": {
+      "CreateInvoice": false,
+      "CompanyLogo": null,
+      "InvoiceDate": "0001-01-01T00:00:00",
+      "InvoiceType": 0,
+      "InvoiceNumber": null,
+      "PaymentTerms": null,
+      "Type": 0,
+      "Valuta": 0,
+      "TaxAmount": 0.0,
+      "FreightCharge": 0.0,
+      "InsuranceCharge": 0.0,
+      "Signature": null,
+      "ReceiverAddress": {
+        "CountryCode": 0,
+        "StateCode": 0,
+        "Addressline1": null,
+        "Addressline2": null,
+        "Addressline3": null,
+        "Zip": null,
+        "City": null,
+        "Phone": null,
+        "Email1": null,
+        "AttPerson": null,
+        "CompanyName": null
+      },
+      "BillingAddress": {
+        "CountryCode": 0,
+        "StateCode": 0,
+        "Addressline1": null,
+        "Addressline2": null,
+        "Addressline3": null,
+        "Zip": null,
+        "City": null,
+        "Phone": null,
+        "Email1": null,
+        "AttPerson": null,
+        "CompanyName": null
+      },
+      "SenderAddress": {
+        "CountryCode": 0,
+        "StateCode": 0,
+        "Addressline1": null,
+        "Addressline2": null,
+        "Addressline3": null,
+        "Zip": null,
+        "City": null,
+        "Phone": null,
+        "Email1": null,
+        "AttPerson": null,
+        "CompanyName": null
+      },
+      "EmailInvoice": {
+        "SendLabelByEmail": false,
+        "Settings": {
+          "SendFromEmail": null,
+          "SendToEmail": null,
+          "SMTP": null,
+          "UserName": null,
+          "Password": null,
+          "Subject": null,
+          "Body": null
+        }
+      },
+      "FTPInvoice": {
+        "TransferLabelToFTP": false,
+        "Settings": {
+          "IPAddress": null,
+          "RemotePath": null,
+          "FTPUserName": null,
+          "FTPPassword": null,
+          "Secure": false,
+          "SaveFileName": null,
+          "PassiveMode": false
+        }
+      },
+      "InvoiceLines": []
+    },
+    "Email": {
+      "SendFromEmail": null,
+      "SendToEmail": null,
+      "SMTP": null,
+      "UserName": null,
+      "Password": null,
+      "Subject": null,
+      "Body": null
+    },
+    "FTP": {
+      "IPAddress": null,
+      "RemotePath": null,
+      "FTPUserName": null,
+      "FTPPassword": null,
+      "Secure": false,
+      "SaveFileName": null,
+      "PassiveMode": false
+    }
+  },
+  "PaperLessShipping": {
+    "UsePaperLessShipment": false,
+    "Documents": [],
+    "CommodityLines": []
+  },
+  "CreateFDA": {
+    "CreateFDA": false,
+    "Email": {
+      "SendFromEmail": null,
+      "SendToEmail": null,
+      "SMTP": null,
+      "UserName": null,
+      "Password": null,
+      "Subject": null,
+      "Body": null
+    },
+    "FTP": {
+      "IPAddress": null,
+      "RemotePath": null,
+      "FTPUserName": null,
+      "FTPPassword": null,
+      "Secure": false,
+      "SaveFileName": null,
+      "PassiveMode": false
+    }
+  },
+  "CreateFCC": {
+    "CreateFCC": false,
+    "Email": {
+      "SendFromEmail": null,
+      "SendToEmail": null,
+      "SMTP": null,
+      "UserName": null,
+      "Password": null,
+      "Subject": null,
+      "Body": null
+    },
+    "FTP": {
+      "IPAddress": null,
+      "RemotePath": null,
+      "FTPUserName": null,
+      "FTPPassword": null,
+      "Secure": false,
+      "SaveFileName": null,
+      "PassiveMode": false
+    }
+  },
+  "CreateCOO": {
+    "CreateCertificateOfOrigin": false,
+    "Email": {
+      "SendFromEmail": null,
+      "SendToEmail": null,
+      "SMTP": null,
+      "UserName": null,
+      "Password": null,
+      "Subject": null,
+      "Body": null
+    },
+    "FTP": {
+      "IPAddress": null,
+      "RemotePath": null,
+      "FTPUserName": null,
+      "FTPPassword": null,
+      "Secure": false,
+      "SaveFileName": null,
+      "PassiveMode": false
+    }
+  },
+  "Services": [],
+  "DefaultPickupAddress": "N",
+  "DefaultSenderAddress": "N",
+  "AccessToken": null
+}

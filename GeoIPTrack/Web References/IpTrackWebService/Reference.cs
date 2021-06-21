@@ -31,6 +31,8 @@ namespace GeoIPTrack.IpTrackWebService {
         
         private System.Threading.SendOrPostCallback JoinOperationCompleted;
         
+        private System.Threading.SendOrPostCallback TestMethodWithParamOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -73,6 +75,9 @@ namespace GeoIPTrack.IpTrackWebService {
         public event JoinCompletedEventHandler JoinCompleted;
         
         /// <remarks/>
+        public event TestMethodWithParamCompletedEventHandler TestMethodWithParamCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Join", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string Join(string name, int age) {
             object[] results = this.Invoke("Join", new object[] {
@@ -104,6 +109,35 @@ namespace GeoIPTrack.IpTrackWebService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TestMethodWithParam", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string TestMethodWithParam(RegisterModel model) {
+            object[] results = this.Invoke("TestMethodWithParam", new object[] {
+                        model});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void TestMethodWithParamAsync(RegisterModel model) {
+            this.TestMethodWithParamAsync(model, null);
+        }
+        
+        /// <remarks/>
+        public void TestMethodWithParamAsync(RegisterModel model, object userState) {
+            if ((this.TestMethodWithParamOperationCompleted == null)) {
+                this.TestMethodWithParamOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTestMethodWithParamOperationCompleted);
+            }
+            this.InvokeAsync("TestMethodWithParam", new object[] {
+                        model}, this.TestMethodWithParamOperationCompleted, userState);
+        }
+        
+        private void OnTestMethodWithParamOperationCompleted(object arg) {
+            if ((this.TestMethodWithParamCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.TestMethodWithParamCompleted(this, new TestMethodWithParamCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -123,6 +157,75 @@ namespace GeoIPTrack.IpTrackWebService {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class RegisterModel {
+        
+        private string usernameField;
+        
+        private string passwordField;
+        
+        private string confirmPasswordField;
+        
+        private string roleIdField;
+        
+        private string[] listOfRolesField;
+        
+        /// <remarks/>
+        public string Username {
+            get {
+                return this.usernameField;
+            }
+            set {
+                this.usernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                this.passwordField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ConfirmPassword {
+            get {
+                return this.confirmPasswordField;
+            }
+            set {
+                this.confirmPasswordField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RoleId {
+            get {
+                return this.roleIdField;
+            }
+            set {
+                this.roleIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string[] ListOfRoles {
+            get {
+                return this.listOfRolesField;
+            }
+            set {
+                this.listOfRolesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void JoinCompletedEventHandler(object sender, JoinCompletedEventArgs e);
     
@@ -135,6 +238,32 @@ namespace GeoIPTrack.IpTrackWebService {
         private object[] results;
         
         internal JoinCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void TestMethodWithParamCompletedEventHandler(object sender, TestMethodWithParamCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TestMethodWithParamCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal TestMethodWithParamCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
