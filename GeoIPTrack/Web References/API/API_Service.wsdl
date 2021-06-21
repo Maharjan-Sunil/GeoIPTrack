@@ -1,0 +1,1675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="CreateShipment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shipmentRequest" type="tns:Shipment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Shipment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LoginToService" type="tns:Login" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccountNumber" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransportProduct" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SenderReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiverReference" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Incoterm" type="tns:IncotermTypesEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipmentDescription" type="tns:Description" />
+          <s:element minOccurs="0" maxOccurs="1" name="Customs" type="tns:Dutiable" />
+          <s:element minOccurs="0" maxOccurs="1" name="Insurance" type="tns:Insurance" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendAsCOD" type="tns:COD" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipmentType" type="tns:ExportReasonTypesEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="DangerousGoods" type="tns:DangerousGoods" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipmentDirection" type="tns:ShipmentDirectionEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="PickupAddress" type="tns:Address" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiverAddress" type="tns:Address" />
+          <s:element minOccurs="0" maxOccurs="1" name="SenderAddress" type="tns:Address" />
+          <s:element minOccurs="0" maxOccurs="1" name="Collies" type="tns:ArrayOfColli" />
+          <s:element minOccurs="0" maxOccurs="1" name="Handling" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatePickup" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceSettings" type="tns:InvoiceSettings" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaperLessShipping" type="tns:PaperLessShipping" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateFDA" type="tns:FDA" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateFCC" type="tns:FCC" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateCOO" type="tns:COO" />
+          <s:element minOccurs="0" maxOccurs="1" name="Services" type="tns:ArrayOfService" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefaultPickupAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefaultSenderAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Login">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="IncotermTypesEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="UNKNOWN" />
+          <s:enumeration value="DAP" />
+          <s:enumeration value="DAT" />
+          <s:enumeration value="EXW" />
+          <s:enumeration value="FCA" />
+          <s:enumeration value="FAS" />
+          <s:enumeration value="FOB" />
+          <s:enumeration value="CPT" />
+          <s:enumeration value="CFR" />
+          <s:enumeration value="CIF" />
+          <s:enumeration value="CIP" />
+          <s:enumeration value="DDP" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Description">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShipmentDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HarmonizedCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Dutiable">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsDocumentFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDutiable" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Money" type="tns:Money" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Money">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValutaCode" type="tns:CurrencyCodeEnum" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CurrencyCodeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="UNKNOWN" />
+          <s:enumeration value="AED" />
+          <s:enumeration value="AFN" />
+          <s:enumeration value="AMD" />
+          <s:enumeration value="ANG" />
+          <s:enumeration value="AOA" />
+          <s:enumeration value="ARS" />
+          <s:enumeration value="AUD" />
+          <s:enumeration value="AWG" />
+          <s:enumeration value="AZM" />
+          <s:enumeration value="BAM" />
+          <s:enumeration value="BBD" />
+          <s:enumeration value="BDT" />
+          <s:enumeration value="BGN" />
+          <s:enumeration value="BHD" />
+          <s:enumeration value="BIF" />
+          <s:enumeration value="BMD" />
+          <s:enumeration value="BND" />
+          <s:enumeration value="BOB" />
+          <s:enumeration value="BRL" />
+          <s:enumeration value="BSD" />
+          <s:enumeration value="BTN" />
+          <s:enumeration value="BWP" />
+          <s:enumeration value="BYR" />
+          <s:enumeration value="BZD" />
+          <s:enumeration value="CAD" />
+          <s:enumeration value="CDF" />
+          <s:enumeration value="CHF" />
+          <s:enumeration value="CLP" />
+          <s:enumeration value="CNY" />
+          <s:enumeration value="COP" />
+          <s:enumeration value="CRC" />
+          <s:enumeration value="CUP" />
+          <s:enumeration value="CVE" />
+          <s:enumeration value="CZK" />
+          <s:enumeration value="DJF" />
+          <s:enumeration value="DKK" />
+          <s:enumeration value="DOP" />
+          <s:enumeration value="DZD" />
+          <s:enumeration value="EEK" />
+          <s:enumeration value="EGP" />
+          <s:enumeration value="ERN" />
+          <s:enumeration value="ETB" />
+          <s:enumeration value="EUR" />
+          <s:enumeration value="FJD" />
+          <s:enumeration value="FKP" />
+          <s:enumeration value="GBP" />
+          <s:enumeration value="GEL" />
+          <s:enumeration value="GHS" />
+          <s:enumeration value="GIP" />
+          <s:enumeration value="GMD" />
+          <s:enumeration value="GNF" />
+          <s:enumeration value="GTQ" />
+          <s:enumeration value="GWP" />
+          <s:enumeration value="GYD" />
+          <s:enumeration value="HKD" />
+          <s:enumeration value="HNL" />
+          <s:enumeration value="HRK" />
+          <s:enumeration value="HTG" />
+          <s:enumeration value="HUF" />
+          <s:enumeration value="IDR" />
+          <s:enumeration value="ILS" />
+          <s:enumeration value="INR" />
+          <s:enumeration value="IQD" />
+          <s:enumeration value="IRR" />
+          <s:enumeration value="ISK" />
+          <s:enumeration value="JMD" />
+          <s:enumeration value="JOD" />
+          <s:enumeration value="JPY" />
+          <s:enumeration value="KES" />
+          <s:enumeration value="KGS" />
+          <s:enumeration value="KHR" />
+          <s:enumeration value="KMF" />
+          <s:enumeration value="KPW" />
+          <s:enumeration value="KRW" />
+          <s:enumeration value="KWD" />
+          <s:enumeration value="KYD" />
+          <s:enumeration value="KZT" />
+          <s:enumeration value="LAK" />
+          <s:enumeration value="LKR" />
+          <s:enumeration value="LRD" />
+          <s:enumeration value="LSL" />
+          <s:enumeration value="LTL" />
+          <s:enumeration value="LVL" />
+          <s:enumeration value="LYD" />
+          <s:enumeration value="MAD" />
+          <s:enumeration value="MDL" />
+          <s:enumeration value="MGA" />
+          <s:enumeration value="MKD" />
+          <s:enumeration value="MNT" />
+          <s:enumeration value="MOP" />
+          <s:enumeration value="MRO" />
+          <s:enumeration value="MUR" />
+          <s:enumeration value="MVR" />
+          <s:enumeration value="MWK" />
+          <s:enumeration value="MXN" />
+          <s:enumeration value="MYR" />
+          <s:enumeration value="MZN" />
+          <s:enumeration value="NGN" />
+          <s:enumeration value="NIO" />
+          <s:enumeration value="NOK" />
+          <s:enumeration value="NPR" />
+          <s:enumeration value="NZD" />
+          <s:enumeration value="OMR" />
+          <s:enumeration value="PAB" />
+          <s:enumeration value="PEN" />
+          <s:enumeration value="PGK" />
+          <s:enumeration value="PHP" />
+          <s:enumeration value="PKR" />
+          <s:enumeration value="PLN" />
+          <s:enumeration value="PYG" />
+          <s:enumeration value="QAR" />
+          <s:enumeration value="RON" />
+          <s:enumeration value="RSD" />
+          <s:enumeration value="RUB" />
+          <s:enumeration value="RWF" />
+          <s:enumeration value="SAR" />
+          <s:enumeration value="SBD" />
+          <s:enumeration value="SCR" />
+          <s:enumeration value="SDG" />
+          <s:enumeration value="SEK" />
+          <s:enumeration value="SGD" />
+          <s:enumeration value="SIS" />
+          <s:enumeration value="SLL" />
+          <s:enumeration value="SOS" />
+          <s:enumeration value="SRD" />
+          <s:enumeration value="SSP" />
+          <s:enumeration value="STD" />
+          <s:enumeration value="SYP" />
+          <s:enumeration value="SZL" />
+          <s:enumeration value="THB" />
+          <s:enumeration value="TJS" />
+          <s:enumeration value="TND" />
+          <s:enumeration value="TOP" />
+          <s:enumeration value="TRY" />
+          <s:enumeration value="TTD" />
+          <s:enumeration value="TWD" />
+          <s:enumeration value="TZS" />
+          <s:enumeration value="UAH" />
+          <s:enumeration value="UGX" />
+          <s:enumeration value="USD" />
+          <s:enumeration value="UYU" />
+          <s:enumeration value="UZS" />
+          <s:enumeration value="VEF" />
+          <s:enumeration value="VND" />
+          <s:enumeration value="VUV" />
+          <s:enumeration value="WST" />
+          <s:enumeration value="XAF" />
+          <s:enumeration value="XCD" />
+          <s:enumeration value="XOF" />
+          <s:enumeration value="XPF" />
+          <s:enumeration value="YER" />
+          <s:enumeration value="ZAR" />
+          <s:enumeration value="ZMK" />
+          <s:enumeration value="ZWD" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Insurance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InsureShipment" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Money" type="tns:Money" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="COD">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EnableCOD" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Money" type="tns:Money" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayType" type="tns:CODPayTypeEnum" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CODPayTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Cash" />
+          <s:enumeration value="Check" />
+          <s:enumeration value="Cashiers_Check" />
+          <s:enumeration value="Money_Order" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ExportReasonTypesEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="UNKNOWN" />
+          <s:enumeration value="PERMANENT" />
+          <s:enumeration value="RETURN" />
+          <s:enumeration value="TEMPORARY" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DangerousGoods">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LimitedQuantityOfDG" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Quatity" type="tns:Measurement" />
+          <s:element minOccurs="0" maxOccurs="1" name="UN_Number" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipmentContainsDG" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:DangerousGoodsTypesEnum" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Measurement">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UnitType" type="tns:UnitType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="UnitType">
+        <s:restriction base="s:string">
+          <s:enumeration value="KG" />
+          <s:enumeration value="Pieces" />
+          <s:enumeration value="LBM" />
+          <s:enumeration value="Liters" />
+          <s:enumeration value="CM" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DangerousGoodsTypesEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="UNKNOWN" />
+          <s:enumeration value="INACCESSIBLE" />
+          <s:enumeration value="ACCESSIBLE" />
+          <s:enumeration value="EXCEPTED_QUANTITIES" />
+          <s:enumeration value="FULLY_REGULATED" />
+          <s:enumeration value="LITHIUM_BATTERIES" />
+          <s:enumeration value="BIOLOGICAL_SUBSTANCE_UN_3373" />
+          <s:enumeration value="LIMITED_QUANTITIES" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ShipmentDirectionEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Export" />
+          <s:enumeration value="Import" />
+          <s:enumeration value="ThreeWays" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CountryCode" type="tns:CountryCodeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="StateCode" type="tns:StatesEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="Addressline1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Addressline2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Addressline3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AttPerson" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CountryCodeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="AD" />
+          <s:enumeration value="AE" />
+          <s:enumeration value="AF" />
+          <s:enumeration value="AG" />
+          <s:enumeration value="AI" />
+          <s:enumeration value="AL" />
+          <s:enumeration value="AM" />
+          <s:enumeration value="AO" />
+          <s:enumeration value="AP" />
+          <s:enumeration value="AQ" />
+          <s:enumeration value="AR" />
+          <s:enumeration value="AS" />
+          <s:enumeration value="AT" />
+          <s:enumeration value="AU" />
+          <s:enumeration value="AW" />
+          <s:enumeration value="AX" />
+          <s:enumeration value="AZ" />
+          <s:enumeration value="BA" />
+          <s:enumeration value="BB" />
+          <s:enumeration value="BD" />
+          <s:enumeration value="BE" />
+          <s:enumeration value="BF" />
+          <s:enumeration value="BG" />
+          <s:enumeration value="BH" />
+          <s:enumeration value="BI" />
+          <s:enumeration value="BJ" />
+          <s:enumeration value="BL" />
+          <s:enumeration value="BM" />
+          <s:enumeration value="BN" />
+          <s:enumeration value="BO" />
+          <s:enumeration value="BQ" />
+          <s:enumeration value="BR" />
+          <s:enumeration value="BS" />
+          <s:enumeration value="BT" />
+          <s:enumeration value="BV" />
+          <s:enumeration value="BW" />
+          <s:enumeration value="BY" />
+          <s:enumeration value="BZ" />
+          <s:enumeration value="CA" />
+          <s:enumeration value="CC" />
+          <s:enumeration value="CD" />
+          <s:enumeration value="CF" />
+          <s:enumeration value="CG" />
+          <s:enumeration value="CH" />
+          <s:enumeration value="CI" />
+          <s:enumeration value="CK" />
+          <s:enumeration value="CL" />
+          <s:enumeration value="CM" />
+          <s:enumeration value="CN" />
+          <s:enumeration value="CO" />
+          <s:enumeration value="CR" />
+          <s:enumeration value="CU" />
+          <s:enumeration value="CV" />
+          <s:enumeration value="CW" />
+          <s:enumeration value="CX" />
+          <s:enumeration value="CY" />
+          <s:enumeration value="CZ" />
+          <s:enumeration value="DE" />
+          <s:enumeration value="DJ" />
+          <s:enumeration value="DK" />
+          <s:enumeration value="DM" />
+          <s:enumeration value="DO" />
+          <s:enumeration value="DZ" />
+          <s:enumeration value="EC" />
+          <s:enumeration value="EE" />
+          <s:enumeration value="EG" />
+          <s:enumeration value="EH" />
+          <s:enumeration value="ER" />
+          <s:enumeration value="ES" />
+          <s:enumeration value="ET" />
+          <s:enumeration value="EU" />
+          <s:enumeration value="FI" />
+          <s:enumeration value="FJ" />
+          <s:enumeration value="FK" />
+          <s:enumeration value="FM" />
+          <s:enumeration value="FO" />
+          <s:enumeration value="FR" />
+          <s:enumeration value="GA" />
+          <s:enumeration value="GB" />
+          <s:enumeration value="GD" />
+          <s:enumeration value="GE" />
+          <s:enumeration value="GF" />
+          <s:enumeration value="GG" />
+          <s:enumeration value="GH" />
+          <s:enumeration value="GI" />
+          <s:enumeration value="GL" />
+          <s:enumeration value="GM" />
+          <s:enumeration value="GN" />
+          <s:enumeration value="GP" />
+          <s:enumeration value="GQ" />
+          <s:enumeration value="GR" />
+          <s:enumeration value="GS" />
+          <s:enumeration value="GT" />
+          <s:enumeration value="GU" />
+          <s:enumeration value="GW" />
+          <s:enumeration value="GY" />
+          <s:enumeration value="HK" />
+          <s:enumeration value="HM" />
+          <s:enumeration value="HN" />
+          <s:enumeration value="HR" />
+          <s:enumeration value="HT" />
+          <s:enumeration value="HU" />
+          <s:enumeration value="IC" />
+          <s:enumeration value="ID" />
+          <s:enumeration value="IE" />
+          <s:enumeration value="IL" />
+          <s:enumeration value="IM" />
+          <s:enumeration value="IN" />
+          <s:enumeration value="IO" />
+          <s:enumeration value="IQ" />
+          <s:enumeration value="IR" />
+          <s:enumeration value="IS" />
+          <s:enumeration value="IT" />
+          <s:enumeration value="JE" />
+          <s:enumeration value="JM" />
+          <s:enumeration value="JO" />
+          <s:enumeration value="JP" />
+          <s:enumeration value="KE" />
+          <s:enumeration value="KG" />
+          <s:enumeration value="KH" />
+          <s:enumeration value="KI" />
+          <s:enumeration value="KM" />
+          <s:enumeration value="KN" />
+          <s:enumeration value="KP" />
+          <s:enumeration value="KR" />
+          <s:enumeration value="KW" />
+          <s:enumeration value="KY" />
+          <s:enumeration value="KZ" />
+          <s:enumeration value="LA" />
+          <s:enumeration value="LB" />
+          <s:enumeration value="LC" />
+          <s:enumeration value="LI" />
+          <s:enumeration value="LK" />
+          <s:enumeration value="LR" />
+          <s:enumeration value="LS" />
+          <s:enumeration value="LT" />
+          <s:enumeration value="LU" />
+          <s:enumeration value="LV" />
+          <s:enumeration value="LY" />
+          <s:enumeration value="MA" />
+          <s:enumeration value="MC" />
+          <s:enumeration value="MD" />
+          <s:enumeration value="ME" />
+          <s:enumeration value="MF" />
+          <s:enumeration value="MG" />
+          <s:enumeration value="MH" />
+          <s:enumeration value="MK" />
+          <s:enumeration value="ML" />
+          <s:enumeration value="MM" />
+          <s:enumeration value="MN" />
+          <s:enumeration value="MO" />
+          <s:enumeration value="MP" />
+          <s:enumeration value="MQ" />
+          <s:enumeration value="MR" />
+          <s:enumeration value="MS" />
+          <s:enumeration value="MT" />
+          <s:enumeration value="MU" />
+          <s:enumeration value="MV" />
+          <s:enumeration value="MW" />
+          <s:enumeration value="MX" />
+          <s:enumeration value="MY" />
+          <s:enumeration value="MZ" />
+          <s:enumeration value="NA" />
+          <s:enumeration value="NC" />
+          <s:enumeration value="NE" />
+          <s:enumeration value="NF" />
+          <s:enumeration value="NG" />
+          <s:enumeration value="NI" />
+          <s:enumeration value="NL" />
+          <s:enumeration value="NO" />
+          <s:enumeration value="NP" />
+          <s:enumeration value="NR" />
+          <s:enumeration value="NU" />
+          <s:enumeration value="NZ" />
+          <s:enumeration value="OM" />
+          <s:enumeration value="PA" />
+          <s:enumeration value="PE" />
+          <s:enumeration value="PF" />
+          <s:enumeration value="PG" />
+          <s:enumeration value="PH" />
+          <s:enumeration value="PK" />
+          <s:enumeration value="PL" />
+          <s:enumeration value="PM" />
+          <s:enumeration value="PN" />
+          <s:enumeration value="PR" />
+          <s:enumeration value="PS" />
+          <s:enumeration value="PT" />
+          <s:enumeration value="PW" />
+          <s:enumeration value="PY" />
+          <s:enumeration value="QA" />
+          <s:enumeration value="RE" />
+          <s:enumeration value="RO" />
+          <s:enumeration value="RS" />
+          <s:enumeration value="RU" />
+          <s:enumeration value="RW" />
+          <s:enumeration value="SA" />
+          <s:enumeration value="SB" />
+          <s:enumeration value="SC" />
+          <s:enumeration value="SD" />
+          <s:enumeration value="SE" />
+          <s:enumeration value="SG" />
+          <s:enumeration value="SH" />
+          <s:enumeration value="SI" />
+          <s:enumeration value="SJ" />
+          <s:enumeration value="SK" />
+          <s:enumeration value="SL" />
+          <s:enumeration value="SM" />
+          <s:enumeration value="SN" />
+          <s:enumeration value="SO" />
+          <s:enumeration value="SR" />
+          <s:enumeration value="SS" />
+          <s:enumeration value="ST" />
+          <s:enumeration value="SV" />
+          <s:enumeration value="SX" />
+          <s:enumeration value="SY" />
+          <s:enumeration value="SZ" />
+          <s:enumeration value="TC" />
+          <s:enumeration value="TD" />
+          <s:enumeration value="TF" />
+          <s:enumeration value="TG" />
+          <s:enumeration value="TH" />
+          <s:enumeration value="TJ" />
+          <s:enumeration value="TK" />
+          <s:enumeration value="TL" />
+          <s:enumeration value="TM" />
+          <s:enumeration value="TN" />
+          <s:enumeration value="TO" />
+          <s:enumeration value="TR" />
+          <s:enumeration value="TT" />
+          <s:enumeration value="TV" />
+          <s:enumeration value="TW" />
+          <s:enumeration value="TZ" />
+          <s:enumeration value="UA" />
+          <s:enumeration value="UG" />
+          <s:enumeration value="UM" />
+          <s:enumeration value="US" />
+          <s:enumeration value="UY" />
+          <s:enumeration value="UZ" />
+          <s:enumeration value="VA" />
+          <s:enumeration value="VC" />
+          <s:enumeration value="VE" />
+          <s:enumeration value="VG" />
+          <s:enumeration value="VI" />
+          <s:enumeration value="VN" />
+          <s:enumeration value="VU" />
+          <s:enumeration value="WF" />
+          <s:enumeration value="WS" />
+          <s:enumeration value="XC" />
+          <s:enumeration value="XK" />
+          <s:enumeration value="YE" />
+          <s:enumeration value="YT" />
+          <s:enumeration value="ZA" />
+          <s:enumeration value="ZM" />
+          <s:enumeration value="ZW" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="StatesEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="UNKNOWN" />
+          <s:enumeration value="AB" />
+          <s:enumeration value="AK" />
+          <s:enumeration value="AL" />
+          <s:enumeration value="AR" />
+          <s:enumeration value="AZ" />
+          <s:enumeration value="BC" />
+          <s:enumeration value="CA" />
+          <s:enumeration value="CO" />
+          <s:enumeration value="CT" />
+          <s:enumeration value="DC" />
+          <s:enumeration value="DE" />
+          <s:enumeration value="FL" />
+          <s:enumeration value="GA" />
+          <s:enumeration value="HI" />
+          <s:enumeration value="IA" />
+          <s:enumeration value="ID" />
+          <s:enumeration value="IL" />
+          <s:enumeration value="IN" />
+          <s:enumeration value="KS" />
+          <s:enumeration value="KY" />
+          <s:enumeration value="LA" />
+          <s:enumeration value="MA" />
+          <s:enumeration value="MB" />
+          <s:enumeration value="MD" />
+          <s:enumeration value="ME" />
+          <s:enumeration value="MI" />
+          <s:enumeration value="MN" />
+          <s:enumeration value="MO" />
+          <s:enumeration value="MS" />
+          <s:enumeration value="MT" />
+          <s:enumeration value="NB" />
+          <s:enumeration value="NC" />
+          <s:enumeration value="ND" />
+          <s:enumeration value="NE" />
+          <s:enumeration value="NH" />
+          <s:enumeration value="NJ" />
+          <s:enumeration value="NL" />
+          <s:enumeration value="NM" />
+          <s:enumeration value="NS" />
+          <s:enumeration value="NT" />
+          <s:enumeration value="NU" />
+          <s:enumeration value="NV" />
+          <s:enumeration value="NY" />
+          <s:enumeration value="OH" />
+          <s:enumeration value="OK" />
+          <s:enumeration value="ON" />
+          <s:enumeration value="OR" />
+          <s:enumeration value="PA" />
+          <s:enumeration value="PE" />
+          <s:enumeration value="QC" />
+          <s:enumeration value="RI" />
+          <s:enumeration value="SC" />
+          <s:enumeration value="SD" />
+          <s:enumeration value="SK" />
+          <s:enumeration value="TN" />
+          <s:enumeration value="TX" />
+          <s:enumeration value="UT" />
+          <s:enumeration value="VA" />
+          <s:enumeration value="VT" />
+          <s:enumeration value="WA" />
+          <s:enumeration value="WI" />
+          <s:enumeration value="WV" />
+          <s:enumeration value="WY" />
+          <s:enumeration value="YT" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfColli">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Colli" nillable="true" type="tns:Colli" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Colli">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Weight" type="tns:MeasurementWeight" />
+          <s:element minOccurs="0" maxOccurs="1" name="Length" type="tns:Measurement" />
+          <s:element minOccurs="0" maxOccurs="1" name="Width" type="tns:Measurement" />
+          <s:element minOccurs="0" maxOccurs="1" name="Height" type="tns:Measurement" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODColliLevel" type="tns:COD" />
+          <s:element minOccurs="0" maxOccurs="1" name="Packaging" type="tns:PackageType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DryIce" type="tns:DryIce" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MeasurementWeight">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UnitType" type="tns:UnitType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PackageType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CustomeType" type="tns:PackagingTypeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransportDefinedType" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PackagingTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="OTHER" />
+          <s:enumeration value="DOCUMENT" />
+          <s:enumeration value="PALLET" />
+          <s:enumeration value="HALF_PALLET" />
+          <s:enumeration value="QUARTER_PALLET" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DryIce">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ShipmentContainsDryIce" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Quatity" type="tns:Measurement" />
+          <s:element minOccurs="1" maxOccurs="1" name="Regulationset" type="tns:RegulationSetEnum" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="RegulationSetEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="HazMat" />
+          <s:enumeration value="IATA" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="InvoiceSettings">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CreateInvoice" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipmentInvoice" type="tns:Invoice" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="tns:EmailSettings" />
+          <s:element minOccurs="0" maxOccurs="1" name="FTP" type="tns:FTPSettings" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Invoice">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CreateInvoice" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyLogo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceType" type="tns:InvoiceTypeEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentTerms" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:LabelTypeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valuta" type="tns:CurrencyCodeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaxAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FreightCharge" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="InsuranceCharge" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Signature" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiverAddress" type="tns:Address" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingAddress" type="tns:Address" />
+          <s:element minOccurs="0" maxOccurs="1" name="SenderAddress" type="tns:Address" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailInvoice" type="tns:EmailLabel" />
+          <s:element minOccurs="0" maxOccurs="1" name="FTPInvoice" type="tns:FTPLabel" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceLines" type="tns:ArrayOfInvoiceItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="InvoiceTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Proforma" />
+          <s:enumeration value="Commercial" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="LabelTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Native" />
+          <s:enumeration value="JPEG" />
+          <s:enumeration value="EMF" />
+          <s:enumeration value="WMF" />
+          <s:enumeration value="TIFF" />
+          <s:enumeration value="GIF" />
+          <s:enumeration value="BMP" />
+          <s:enumeration value="PNG" />
+          <s:enumeration value="PDF" />
+          <s:enumeration value="ZPL" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="EmailLabel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SendLabelByEmail" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Settings" type="tns:EmailSettings" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmailSettings">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SendFromEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMTP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FTPLabel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TransferLabelToFTP" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Settings" type="tns:FTPSettings" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FTPSettings">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RemotePath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FTPUserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FTPPassword" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Secure" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaveFileName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PassiveMode" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInvoiceItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InvoiceItem" nillable="true" type="tns:InvoiceItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InvoiceItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TextLine" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OriginCountryCode" type="tns:CountryCodeEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="PricePerUnit" type="tns:Money" />
+          <s:element minOccurs="0" maxOccurs="1" name="HarmonizedCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnitType" type="tns:Measurement" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PaperLessShipping">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UsePaperLessShipment" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Documents" type="tns:ArrayOfPaperLessDocument" />
+          <s:element minOccurs="0" maxOccurs="1" name="CommodityLines" type="tns:ArrayOfCommodityLine" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPaperLessDocument">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PaperLessDocument" nillable="true" type="tns:PaperLessDocument" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PaperLessDocument">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Document" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentType" type="tns:DocTypeEnum" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DocTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="HWB" />
+          <s:enumeration value="INV" />
+          <s:enumeration value="PNV" />
+          <s:enumeration value="COO" />
+          <s:enumeration value="NAF" />
+          <s:enumeration value="CIN" />
+          <s:enumeration value="DCL" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfCommodityLine">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CommodityLine" nillable="true" type="tns:CommodityLine" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CommodityLine">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TextLine" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginCountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PricePerUnit" type="tns:Money" />
+          <s:element minOccurs="0" maxOccurs="1" name="HarmonizedCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Measurement" type="tns:Measurement" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FDA">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CreateFDA" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="tns:EmailSettings" />
+          <s:element minOccurs="0" maxOccurs="1" name="FTP" type="tns:FTPSettings" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FCC">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CreateFCC" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="tns:EmailSettings" />
+          <s:element minOccurs="0" maxOccurs="1" name="FTP" type="tns:FTPSettings" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="COO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CreateCertificateOfOrigin" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="tns:EmailSettings" />
+          <s:element minOccurs="0" maxOccurs="1" name="FTP" type="tns:FTPSettings" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Service" nillable="true" type="tns:Service" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Service">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceType" type="tns:ServiceEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdditionalParameter" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ServiceEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="ISCARBONNEUTRAL" />
+          <s:enumeration value="ISNEUTRALIZESHIPMENT" />
+          <s:enumeration value="ISSATURDAYDELIVERY" />
+          <s:enumeration value="ISRESIDENTIALDELIVERY" />
+          <s:enumeration value="ISNONESTACKABLE" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreateShipmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateShipmentResult" type="tns:Reply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Reply">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="tns:ReplyStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="Documents" type="tns:ArrayOfLabel" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColliList" type="tns:ArrayOfColliItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="CostList" type="tns:ArrayOfCost" />
+          <s:element minOccurs="0" maxOccurs="1" name="MainAWB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DaysInTransit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrackandTraceLink" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReplyStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorList" type="tns:ArrayOfError" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfError">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Error" nillable="true" type="tns:Error" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Error">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorLevel" type="tns:ErrorLevelEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransportErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransportErrorNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ErrorLevelEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Warning" />
+          <s:enumeration value="Failure" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfLabel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Label" nillable="true" type="tns:Label" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Label">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LabelType" type="tns:LabelTypeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="LabelSize" type="tns:LabelSizeEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImageType" type="tns:ImageTypeEnum" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="LabelSizeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Native" />
+          <s:enumeration value="A4" />
+          <s:enumeration value="Letter" />
+          <s:enumeration value="LabelSize" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ImageTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="NATIVE" />
+          <s:enumeration value="AWB" />
+          <s:enumeration value="INVOICE" />
+          <s:enumeration value="FDA" />
+          <s:enumeration value="FCC" />
+          <s:enumeration value="COO" />
+          <s:enumeration value="CMR" />
+          <s:enumeration value="OTHER" />
+          <s:enumeration value="FRAGTBREV" />
+          <s:enumeration value="CONNOTE" />
+          <s:enumeration value="ARCHIVELABEL" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfColliItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ColliItem" nillable="true" type="tns:ColliItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ColliItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AWBLabel" type="tns:Label" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColliID1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColliID2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColliID3" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCost">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cost" nillable="true" type="tns:Cost" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cost">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:PriceLineTypeEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="Money" type="tns:Money" />
+          <s:element minOccurs="0" maxOccurs="1" name="CostText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PriceLineTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="UNKNOWN" />
+          <s:enumeration value="Price" />
+          <s:enumeration value="Insurance" />
+          <s:enumeration value="RAS" />
+          <s:enumeration value="HeavyWeight" />
+          <s:enumeration value="Fuel" />
+          <s:enumeration value="DG" />
+          <s:enumeration value="DryIce" />
+          <s:enumeration value="AddressCorrectionFee" />
+          <s:enumeration value="CC" />
+          <s:enumeration value="DDP" />
+          <s:enumeration value="Security" />
+          <s:enumeration value="ExtraTime" />
+          <s:enumeration value="Pickup" />
+          <s:enumeration value="Import" />
+          <s:enumeration value="Customs" />
+          <s:enumeration value="Environmental" />
+          <s:enumeration value="AdminFee" />
+          <s:enumeration value="HandlingFee" />
+          <s:enumeration value="CustomsClearance" />
+          <s:enumeration value="DGFee" />
+          <s:enumeration value="OverSizeFee" />
+          <s:enumeration value="AdditionalHandling" />
+          <s:enumeration value="LargePackage" />
+          <s:enumeration value="OverMaxLength" />
+          <s:enumeration value="OverMaxSize" />
+          <s:enumeration value="OverMaxWeight" />
+          <s:enumeration value="ElevatedRisk" />
+          <s:enumeration value="RestrictedDestination" />
+          <s:enumeration value="UPSPickupScheduleNextDay" />
+          <s:enumeration value="UPSPickupScheduleSameDay" />
+          <s:enumeration value="PostnordEnvironment" />
+          <s:enumeration value="PostnordSulfur" />
+          <s:enumeration value="ExtendedAreaSurcharge" />
+          <s:enumeration value="RemoteAreaSurcharge" />
+          <s:enumeration value="DeliveryAreaSurcharge" />
+          <s:enumeration value="DeliveryAreaSurchargeExtended" />
+          <s:enumeration value="RemoteAreaSurchargeExtended" />
+          <s:enumeration value="ExtendedAreaSurchargePickup" />
+          <s:enumeration value="RemoteAreaSurchargePickup" />
+          <s:enumeration value="ReturnService" />
+          <s:enumeration value="ResidentialDelivery" />
+          <s:enumeration value="CommercialInvoiceRemoval" />
+          <s:enumeration value="CarbonNeutral" />
+          <s:enumeration value="SaturdayDelivery" />
+          <s:enumeration value="UPSSignatureRequires" />
+          <s:enumeration value="UPSAdultSignatureRequires" />
+          <s:enumeration value="NonStackable" />
+          <s:enumeration value="MAUT" />
+          <s:enumeration value="BringCOD" />
+          <s:enumeration value="CitySurcharge" />
+          <s:enumeration value="SpecialHandling" />
+          <s:enumeration value="GLSCustomClearance" />
+          <s:enumeration value="ExporterValidation" />
+          <s:enumeration value="GLSExportNorwayFee" />
+          <s:enumeration value="GLSExportSwitzerlandFee" />
+          <s:enumeration value="GLSExportOtherCountriesFee" />
+          <s:enumeration value="NonConveyable" />
+          <s:enumeration value="EmergencySituation" />
+          <s:enumeration value="TemporarySurcharge" />
+          <s:enumeration value="GLSAlternativedelivery" />
+          <s:enumeration value="GLSIncorrectAddress" />
+          <s:enumeration value="GLSReDelivery" />
+          <s:enumeration value="GLSNonConveyable" />
+          <s:enumeration value="UPSAdjustment" />
+          <s:enumeration value="Customclearanceover5Tarifflines" />
+          <s:enumeration value="Customsexportsover5tarifflines" />
+          <s:enumeration value="Brexit" />
+          <s:enumeration value="PeakSeasonAdditionalHandling" />
+          <s:enumeration value="PeakSeasonLargePackage" />
+          <s:enumeration value="PeakSeasonOverMaximumLimits" />
+          <s:enumeration value="ChangeofTransportAssigment" />
+          <s:enumeration value="DeliveryIssues" />
+          <s:enumeration value="AditionalPackageFee" />
+          <s:enumeration value="PaidByOtherParty" />
+          <s:enumeration value="PickupAtTerminal" />
+          <s:enumeration value="Notification" />
+          <s:enumeration value="NotificationByMail" />
+          <s:enumeration value="PrivateDelivery" />
+          <s:enumeration value="DHLFreightClass1" />
+          <s:enumeration value="DHLFreightClass2" />
+          <s:enumeration value="DHLFreightClass3" />
+          <s:enumeration value="SPCOD" />
+          <s:enumeration value="UncollectedShipment" />
+          <s:enumeration value="ManualConnote" />
+          <s:enumeration value="IncorrectPackageNumber" />
+          <s:enumeration value="DeliveryNotification" />
+          <s:enumeration value="IncorrectShipmentInfo" />
+          <s:enumeration value="CustomHandlingFullService" />
+          <s:enumeration value="GotlandSurcharge" />
+          <s:enumeration value="DangerousGoods" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="StoreShipment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shipmentRequest" type="tns:Shipment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StoreShipmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StoreShipmentResult" type="tns:Reply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetShippingOptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shipmentRequest" type="tns:Shipment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetShippingOptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetShippingOptionsResult" type="tns:ReplyShippingOptions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReplyShippingOptions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="tns:ArrayOfShippingOptions" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="tns:ReplyStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfShippingOptions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ShippingOptions" nillable="true" type="tns:ShippingOptions" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShippingOptions">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TransportProductID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransportProduct" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BillableWeight" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Transit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestBookingTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Price" type="tns:ArrayOfCost" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateShipmentbyShotfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ShotFile" type="tns:ShotFileModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ShotFileModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BatchName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginToService" type="tns:Login" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateShipmentbyShotfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateShipmentbyShotfileResult" type="tns:ShotReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ShotReply">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ShotFileId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FileStatus" type="tns:ShotfileErrorLevelEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="result" type="tns:SuccessUnsuccessOperationWithStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="tns:ShotFileReplyStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="FailedLines" type="tns:ArrayOfLineStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="SuccessLines" type="tns:ArrayOfLineStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDFList" type="tns:ArrayOfShipmentAWBForShotFiles" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ShotfileErrorLevelEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Uploaded" />
+          <s:enumeration value="Created" />
+          <s:enumeration value="Error" />
+          <s:enumeration value="Processed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="SuccessUnsuccessOperationWithStatus">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SuccessUnsuccessOperationCount">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NewStatusName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SuccessUnsuccessOperationCount">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Errors" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShotFileReplyStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ValidationErrorList" type="tns:ArrayOfShotvalidationError" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShotErrorList" type="tns:ArrayOfShotfileError" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfShotvalidationError">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ShotvalidationError" nillable="true" type="tns:ShotvalidationError" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShotvalidationError">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorLevel" type="tns:ErrorLevelEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShotFileErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShotLineErrorNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfShotfileError">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ShotfileError" nillable="true" type="tns:ShotfileError" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShotfileError">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorLevel" type="tns:ShotfileErrorLevelEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShotFileErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShotLineErrorNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLineStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineStatus" nillable="true" type="tns:LineStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LineStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="lineId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfShipmentAWBForShotFiles">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ShipmentAWBForShotFiles" nillable="true" type="tns:ShipmentAWBForShotFiles" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShipmentAWBForShotFiles">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ExtraCopy" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AWBFileName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CompanyLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginData" type="tns:LoginCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginCredentials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CompanyLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyLoginResult" type="tns:LoginReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginReply">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserFullName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="tns:ShotFileReplyStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UploadMatrix">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="loginCredentials" type="tns:LoginCredentials" />
+            <s:element minOccurs="0" maxOccurs="1" name="account" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MatrixtypeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="salesproductID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="validFrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="validTo" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="matrixFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="matrix" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadMatrixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadMatrixResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadInvoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="invoice" type="tns:API_InvoiceModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="API_InvoiceModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DueDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceDocumentContent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginToService" type="tns:Login" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UploadInvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadInvoiceResult" type="tns:InvoiceReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InvoiceReply">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TransportInvoiceRecordID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsUploaded" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsInvalidFile" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="tns:ReplyStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AutoValidateInvoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="invoice" type="tns:InvoiceReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AutoValidateInvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AutoValidateInvoiceResult" type="tns:InvoiceReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCustomerFromFTP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apiCompanyModel" type="tns:APICompanyModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="APICompanyModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BranchName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BranchID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="VatNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="tns:APIAddress" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsProspect" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanDeleteShipments" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="tns:Login" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="APIAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Addressline1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Addressline2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Addressline3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountryCode" type="tns:CountryCodeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="StateCode" type="tns:StatesEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateCustomerFromFTPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateCustomerFromFTPResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateShipmentSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateShipment" />
+  </wsdl:message>
+  <wsdl:message name="CreateShipmentSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateShipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreShipmentSoapIn">
+    <wsdl:part name="parameters" element="tns:StoreShipment" />
+  </wsdl:message>
+  <wsdl:message name="StoreShipmentSoapOut">
+    <wsdl:part name="parameters" element="tns:StoreShipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetShippingOptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetShippingOptions" />
+  </wsdl:message>
+  <wsdl:message name="GetShippingOptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetShippingOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateShipmentbyShotfileSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateShipmentbyShotfile" />
+  </wsdl:message>
+  <wsdl:message name="CreateShipmentbyShotfileSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateShipmentbyShotfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompanyLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:CompanyLogin" />
+  </wsdl:message>
+  <wsdl:message name="CompanyLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:CompanyLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadMatrixSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadMatrix" />
+  </wsdl:message>
+  <wsdl:message name="UploadMatrixSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadMatrixResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadInvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadInvoice" />
+  </wsdl:message>
+  <wsdl:message name="UploadInvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="AutoValidateInvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:AutoValidateInvoice" />
+  </wsdl:message>
+  <wsdl:message name="AutoValidateInvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:AutoValidateInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerFromFTPSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCustomerFromFTP" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerFromFTPSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCustomerFromFTPResponse" />
+  </wsdl:message>
+  <wsdl:portType name="API_ServiceSoap">
+    <wsdl:operation name="CreateShipment">
+      <wsdl:input message="tns:CreateShipmentSoapIn" />
+      <wsdl:output message="tns:CreateShipmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StoreShipment">
+      <wsdl:input message="tns:StoreShipmentSoapIn" />
+      <wsdl:output message="tns:StoreShipmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShippingOptions">
+      <wsdl:input message="tns:GetShippingOptionsSoapIn" />
+      <wsdl:output message="tns:GetShippingOptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateShipmentbyShotfile">
+      <wsdl:input message="tns:CreateShipmentbyShotfileSoapIn" />
+      <wsdl:output message="tns:CreateShipmentbyShotfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompanyLogin">
+      <wsdl:input message="tns:CompanyLoginSoapIn" />
+      <wsdl:output message="tns:CompanyLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadMatrix">
+      <wsdl:input message="tns:UploadMatrixSoapIn" />
+      <wsdl:output message="tns:UploadMatrixSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadInvoice">
+      <wsdl:input message="tns:UploadInvoiceSoapIn" />
+      <wsdl:output message="tns:UploadInvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AutoValidateInvoice">
+      <wsdl:input message="tns:AutoValidateInvoiceSoapIn" />
+      <wsdl:output message="tns:AutoValidateInvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerFromFTP">
+      <wsdl:input message="tns:CreateCustomerFromFTPSoapIn" />
+      <wsdl:output message="tns:CreateCustomerFromFTPSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="API_ServiceSoap" type="tns:API_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateShipment">
+      <soap:operation soapAction="http://tempuri.org/CreateShipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StoreShipment">
+      <soap:operation soapAction="http://tempuri.org/StoreShipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShippingOptions">
+      <soap:operation soapAction="http://tempuri.org/GetShippingOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateShipmentbyShotfile">
+      <soap:operation soapAction="http://tempuri.org/CreateShipmentbyShotfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompanyLogin">
+      <soap:operation soapAction="http://tempuri.org/CompanyLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadMatrix">
+      <soap:operation soapAction="http://tempuri.org/UploadMatrix" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadInvoice">
+      <soap:operation soapAction="http://tempuri.org/UploadInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutoValidateInvoice">
+      <soap:operation soapAction="http://tempuri.org/AutoValidateInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerFromFTP">
+      <soap:operation soapAction="http://tempuri.org/CreateCustomerFromFTP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="API_ServiceSoap12" type="tns:API_ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateShipment">
+      <soap12:operation soapAction="http://tempuri.org/CreateShipment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StoreShipment">
+      <soap12:operation soapAction="http://tempuri.org/StoreShipment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShippingOptions">
+      <soap12:operation soapAction="http://tempuri.org/GetShippingOptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateShipmentbyShotfile">
+      <soap12:operation soapAction="http://tempuri.org/CreateShipmentbyShotfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompanyLogin">
+      <soap12:operation soapAction="http://tempuri.org/CompanyLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadMatrix">
+      <soap12:operation soapAction="http://tempuri.org/UploadMatrix" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadInvoice">
+      <soap12:operation soapAction="http://tempuri.org/UploadInvoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutoValidateInvoice">
+      <soap12:operation soapAction="http://tempuri.org/AutoValidateInvoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomerFromFTP">
+      <soap12:operation soapAction="http://tempuri.org/CreateCustomerFromFTP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="API_Service">
+    <wsdl:port name="API_ServiceSoap" binding="tns:API_ServiceSoap">
+      <soap:address location="http://localhost:15448/API_Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="API_ServiceSoap12" binding="tns:API_ServiceSoap12">
+      <soap12:address location="http://localhost:15448/API_Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

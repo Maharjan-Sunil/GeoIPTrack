@@ -32,5 +32,15 @@ namespace GeoIPTrack.Properties {
                 return ((string)(this["GeoIPTrack_IpTrackWebService_IpTrack"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:15448/API_Service.asmx")]
+        public string GeoIPTrack_API_API_Service {
+            get {
+                return ((string)(this["GeoIPTrack_API_API_Service"]));
+            }
+        }
     }
 }
